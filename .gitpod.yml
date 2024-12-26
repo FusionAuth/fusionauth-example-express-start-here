@@ -1,0 +1,35 @@
+image: 
+  file: Dockerfile
+
+tasks:
+
+  # ------------------------------------
+  # Start FusionAuth in Docker
+  # ------------------------------------
+  - name: cqlsh
+    command: |
+      docker compose up
+
+ports:
+  - port: 9011
+    onOpen: ignore
+    visibility: public
+  - port: 3000
+    onOpen: ignore
+    visibility: public
+  - port: 9012
+    onOpen: ignore
+    visibility: public
+  - port: 9020
+    onOpen: ignore
+    visibility: public
+  - port: 9021
+    onOpen: ignore
+    visibility: public
+  - port: 5432
+    onOpen: ignore
+    visibility: public
+
+vscode:
+  extensions:
+    - https://github.com/synedra/katapod/releases/download/0.1.4/katapod-0.1.4.vsix
