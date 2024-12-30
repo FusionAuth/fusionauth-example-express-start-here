@@ -29,6 +29,7 @@ if (!process.env.fusionAuthURL) {
 const clientId = process.env.clientId;
 const clientSecret = process.env.clientSecret;
 const fusionAuthURL = process.env.fusionAuthURL;
+const fusionAuthRedirectURL = process.env.fusionAuthRedirectURL
 
 // Validate the token signature, make sure it wasn't expired
 const validateUser = async (userTokenCookie: { access_token: string }) => {
@@ -100,7 +101,7 @@ app.get('/login', (req, res, next) => {
     res.redirect(302, '/');
   }
 
-  res.redirect(302, `${fusionAuthURL}/oauth2/authorize?client_id=${clientId}&response_type=code&redirect_uri=http://localhost:${port}/oauth-redirect&state=${userSessionCookie?.stateValue}&code_challenge=${userSessionCookie?.challenge}&code_challenge_method=S256`)
+  res.redirect(302, `${fusionAuthURL}/oauth2/authorize?client_id=${clientId}&response_type=code&redirect_uri=${fusionAuthRedirectURL}/oauth-redirect&state=${userSessionCookie?.stateValue}&code_challenge=${userSessionCookie?.challenge}&code_challenge_method=S256`)
 });
 //end::login[]
 
@@ -124,7 +125,7 @@ app.get('/oauth-redirect', async (req, res, next) => {
     const accessToken = (await client.exchangeOAuthCodeForAccessTokenUsingPKCE(authCode,
       clientId,
       clientSecret,
-      `http://localhost:${port}/oauth-redirect`,
+      `${fusionAuthRedirectURL}/oauth-redirect`,
       userSessionCookie.verifier)).response;
 
     if (!accessToken.access_token) {
