@@ -6,8 +6,9 @@ tasks:
   # ------------------------------------
   # Start FusionAuth in Docker
   # ------------------------------------
-  - name: cqlsh
+  - name: server
     command: |
+      bash /workspace/fusionauth-example-express-start-here/ports.sh
       docker compose up
 
 ports:
@@ -29,7 +30,3 @@ ports:
   - port: 5432
     onOpen: ignore
     visibility: public
-
-vscode:
-  extensions:
-    - https://github.com/synedra/katapod/releases/download/0.1.4/katapod-0.1.4.vsix
