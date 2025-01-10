@@ -1,0 +1,7 @@
+{
+    "workbench.startupEditor": "none",
+    "workbench.editorAssociations": 
+        {
+            "GITPOD.md": "vscode.markdown.preview.editor",
+        }
+}

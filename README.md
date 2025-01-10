@@ -4,6 +4,8 @@ This repo holds an example Express.js application that uses FusionAuth as the id
 This application will use an OAuth Authorization Code Grant workflow to log a user in and 
 get them access and refresh tokens.
 
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/synedra/fusionauth-example-express-start-here)
+
 ## Project Contents
 
 The `docker-compose.yml` file and the `kickstart` directory are used to start and configure a local FusionAuth server.

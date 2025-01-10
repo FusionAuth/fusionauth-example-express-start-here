@@ -1,0 +1,49 @@
+tasks:
+
+  # ------------------------------------
+  # Start FusionAuth in Docker
+  # ------------------------------------
+  - name: docker-compose
+    command: |
+      gp preview https://fusionauth.io/docs/get-started/start-here#install-and-run-in-gitpod
+      bash /workspace/fusionauth-example-express-start-here/ports.sh
+      docker compose up
+  - name: terminal
+    command: |
+      bash /workspace/fusionauth-example-express-start-here/startup.sh
+      gp preview `gp url 9011`/admin --external
+
+ports:
+  - port: 9011
+    onOpen: ignore
+    visibility: public
+  - port: 3000
+    onOpen: ignore
+    visibility: public
+  - port: 9012
+    onOpen: ignore
+    visibility: public
+  - port: 9020
+    onOpen: ignore
+    visibility: public
+  - port: 9021
+    onOpen: ignore
+    visibility: public
+  - port: 5432
+    onOpen: ignore
+    visibility: public
+  - port: 1025
+    onOpen: ignore
+    visibility: public
+  - port: 1080
+    onOpen: ignore
+    visibility: public
+  - port: 9200
+    onOpen: ignore
+    visibility: public
+  - port: 9600
+    onOpen: ignore
+    visibility: public
+  - port: 33109
+    onOpen: ignore
+    visibility: public
